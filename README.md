@@ -1,36 +1,36 @@
 # Melody API & Backend
 
-Backend documentation and database assets for **Melody**, a mobile music catalog and player application.
+Dokumentasi backend dan aset basis data untuk **Melody**, aplikasi katalog dan pemutar musik berbasis mobile.
 
-> This repository contains backend documentation, database definitions, API specifications, security policies, and storage documentation. The backend platform selected for Melody is **Supabase**. This repository is not a separate Express.js server.
+> Repository ini berisi dokumentasi backend, definisi basis data, spesifikasi API, kebijakan keamanan, dan dokumentasi penyimpanan file. Platform backend yang telah dipilih untuk Melody adalah **Supabase**. Repository ini bukan server Express.js yang berdiri sendiri.
 
-## Project Overview
+## Gambaran Umum Proyek
 
-Melody is an Android application built with Kotlin and Jetpack Compose. It provides user authentication, music catalog browsing and management, playlists, favorites, search, and audio playback.
+Melody adalah aplikasi Android yang dibangun menggunakan Kotlin dan Jetpack Compose. Aplikasi ini menyediakan fitur autentikasi pengguna, penelusuran dan pengelolaan katalog musik, playlist, favorit, pencarian, serta pemutaran audio.
 
-The mobile application communicates with the backend through Supabase services:
+Aplikasi mobile berkomunikasi dengan backend melalui layanan Supabase:
 
-- **Supabase Auth** — user authentication and session management.
-- **Supabase REST API (PostgREST)** — data access and JSON responses.
-- **PostgreSQL** — primary relational database.
-- **Row Level Security (RLS)** — backend-enforced data access policies.
-- **Supabase Storage** — catalog audio and artwork files.
+- **Supabase Auth** — autentikasi pengguna dan pengelolaan sesi.
+- **Supabase REST API (PostgREST)** — akses data dan pertukaran respons JSON.
+- **PostgreSQL** — basis data relasional utama.
+- **Row Level Security (RLS)** — kebijakan pengaturan hak akses data di sisi backend.
+- **Supabase Storage** — penyimpanan file audio katalog dan gambar.
 
-The Android application follows the approved MVVM and Repository Pattern architecture. Public music metadata lookup is handled separately through the MusicBrainz API; MusicBrainz is not the source of Melody's application database or audio streaming.
+Aplikasi Android menggunakan arsitektur MVVM dan Repository Pattern yang telah disetujui. Pencarian metadata musik publik ditangani secara terpisah melalui MusicBrainz API. MusicBrainz bukan sumber basis data utama Melody dan tidak digunakan untuk streaming audio.
 
-## Repository Scope
+## Ruang Lingkup Repository
 
-This repository is intended to contain:
+Repository ini direncanakan untuk menyimpan:
 
-| Area | Purpose |
+| Direktori | Fungsi |
 |---|---|
-| `docs/` | Backend architecture and API specifications |
-| `database/` | PostgreSQL schema, migrations, and RLS policies |
-| `storage/` | Storage bucket and file-structure documentation |
+| `docs/` | Dokumentasi arsitektur backend dan spesifikasi API |
+| `database/` | Skema PostgreSQL, migrasi, dan kebijakan RLS |
+| `storage/` | Dokumentasi bucket penyimpanan dan struktur file |
 
-The Android application source code belongs in the separate [Mobile Repository](https://github.com/Yuratama1/0136_MelodyApp).
+Kode sumber aplikasi Android disimpan pada [Mobile Repository](https://github.com/Yuratama1/0136_MelodyApp) yang terpisah.
 
-## Planned Structure
+## Rencana Struktur Repository
 
 ```text
 0136_API_MelodyApp/
@@ -48,11 +48,11 @@ The Android application source code belongs in the separate [Mobile Repository](
 └── .gitignore
 ```
 
-Files and directories will be added as their corresponding tasks are prepared and reviewed. The planned structure does not mean that the database, policies, or Supabase project have already been deployed.
+File dan direktori akan ditambahkan secara bertahap sesuai persiapan dan hasil peninjauan task terkait. Struktur yang direncanakan ini tidak berarti bahwa basis data, kebijakan keamanan, atau proyek Supabase sudah dibuat maupun diterapkan.
 
-## Core Data Model
+## Model Data Utama
 
-The approved initial data model contains nine tables:
+Rancangan awal basis data yang telah disetujui terdiri dari sembilan tabel:
 
 1. `users`
 2. `songs`
@@ -64,36 +64,36 @@ The approved initial data model contains nine tables:
 8. `favorites`
 9. `play_history`
 
-Detailed columns, constraints, relationships, deletion behavior, and authorization rules will be documented in the database schema and policy files.
+Detail kolom, batasan data, relasi antartabel, aturan penghapusan, dan hak akses akan didokumentasikan lebih lanjut pada file skema basis data dan kebijakan keamanan.
 
-## Security Principles
+## Prinsip Keamanan
 
-- Authorization must be enforced by the backend using RLS, not only by hiding UI elements.
-- Public registration must not allow a user to assign themselves the Admin role.
-- Users may access and manage only their own playlists, favorites, and play history.
-- Admin catalog-management permissions do not automatically grant access to users' personal music data.
-- Supabase Service Role keys and other privileged secrets must never be embedded in the Android application.
-- Secrets and local environment files must not be committed to this repository.
+- Hak akses wajib ditegakkan oleh backend menggunakan RLS, bukan hanya dengan menyembunyikan elemen antarmuka.
+- Pendaftaran publik tidak boleh memberikan kemampuan kepada pengguna untuk menetapkan peran Admin bagi dirinya sendiri.
+- Pengguna hanya boleh mengakses dan mengelola playlist, favorit, serta riwayat pemutarannya sendiri.
+- Hak Admin untuk mengelola katalog musik tidak otomatis memberikan akses ke data musik pribadi pengguna.
+- Supabase Service Role Key dan kredensial istimewa lainnya tidak boleh disimpan di dalam aplikasi Android.
+- Secret dan file konfigurasi lingkungan lokal tidak boleh diunggah ke repository ini.
 
-## Development Status
+## Status Pengembangan
 
-**Current status: Repository initialized; backend implementation and Supabase deployment have not yet been verified.**
+**Status saat ini: Repository telah dibuat dan README telah disiapkan. Implementasi backend serta penerapan Supabase belum diverifikasi.**
 
-Backend assets will be added progressively through the approved Melody task breakdown. A task is considered complete only after its acceptance criteria and evidence have been reviewed.
+Aset backend akan ditambahkan secara bertahap mengikuti daftar task Melody yang telah disetujui. Suatu task hanya dinyatakan selesai setelah kriteria penerimaan dan bukti implementasinya ditinjau.
 
-## Related Repository
+## Repository Terkait
 
 - [Melody Android Mobile Repository](https://github.com/Yuratama1/0136_MelodyApp)
 
-## Technology
+## Teknologi yang Digunakan
 
 - Supabase Auth
 - Supabase REST API (PostgREST)
 - PostgreSQL
 - Row Level Security (RLS)
 - Supabase Storage
-- MusicBrainz Public API (metadata lookup)
+- MusicBrainz Public API (pencarian metadata musik)
 
 ---
 
-This README describes the approved project direction. Update the development status only when supported by repository changes and implementation evidence.
+README ini menjelaskan arah pengembangan proyek yang telah disetujui. Status pengembangan harus diperbarui berdasarkan perubahan repository dan bukti implementasi yang benar-benar tersedia.
